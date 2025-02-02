@@ -2,19 +2,20 @@ import socket
 import time
 
 HOST = "localhost"
-PORT = 44444
+PORT = 33333
 clients = []
+no_of_clients = 1 #mention the number of clients here
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
-    s.listen(2)
+    s.listen(no_of_clients)  
 
     print("Waiting for connections...")
-    for i in range(2):
+    for i in range(no_of_clients):
         conn, addr = s.accept()
         clients.append(conn)
         print(f"Connected to client {i+1}: {addr}")
 
-    print("Both clients connected. Ready to send commands...")
+    print("All clients connected. Ready to send commands...")
 
     try:
         while True:
