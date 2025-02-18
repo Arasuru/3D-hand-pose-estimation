@@ -29,7 +29,7 @@ out = None
 all_landmarks = []
 
 #setting-up webcam and mediapipe overlay and connection to the server
-cap = cv2.VideoCapture(3)
+cap = cv2.VideoCapture(0)
 s = connect_to_server()
 
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5,max_num_hands=1) as hands:
@@ -56,6 +56,7 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5,ma
                 mp_drawing.draw_landmarks(image, hand, mp_hands.HAND_CONNECTIONS,  #use image instead of blank_frame to save actual video
                                          mp_drawing.DrawingSpec(color=(255, 0, 21), thickness=2, circle_radius=2), #for joints and dots
                                          mp_drawing.DrawingSpec(color=(16, 255, 0), thickness=2, circle_radius=2)) #for connections and lines
+      
                 
                 #this is to store the x,y,z co-ordinates
                 for lm in hand.landmark:
@@ -68,8 +69,7 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5,ma
                     all_landmarks.append(landmarks_3d)  # Append current frame landmarks
                     
         cv2.imshow('Hand Tracking', image) #use image instead of blank_frame to save actual video
-        cv2.pollKey()
-        
+        key = cv2.pollKey()
 
         try:  # Toggle recording on 'r' key press
             data = s.recv(1024)
