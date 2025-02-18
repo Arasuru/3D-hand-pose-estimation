@@ -1,5 +1,4 @@
 import socket
-import time
 
 HOST = "localhost"
 PORT = 33333
