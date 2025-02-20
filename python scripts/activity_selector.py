@@ -7,7 +7,6 @@ activities = ["pouring water", "writing", "moving an object", "opening a jar/bot
 
 starttime = datetime.now().timestamp()
 while(True):
-    input("enter any key")
     if(activities != [] or gestures != []):
         cat = random.choice([gestures, activities])
         if (cat != []):
