@@ -6,3 +6,4 @@ Tripod:
 Camera:
 1. Using 16-55mm lens
 2. Use 30mm zoom
+s
