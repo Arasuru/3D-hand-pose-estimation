@@ -5,5 +5,5 @@ Tripod:
 
 Camera:
 1. Using 16-55mm lens
-2. Use 30mm zoom
+2. Use 30mm zoom, 40mm zoom from 2nd setting(only extend one leg), 24mm from third setting(from side and only one leg extended
 s
