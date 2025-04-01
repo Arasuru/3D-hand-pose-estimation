@@ -6,6 +6,7 @@ import os
 import csv
 import socket
 import datetime
+import time
 
 #setting up server connection function
 def connect_to_server(host='localhost', port=33333):
@@ -30,6 +31,19 @@ all_landmarks = []
 
 #setting-up webcam and mediapipe overlay and connection to the server
 cap = cv2.VideoCapture(2)
+
+num_frames = 30
+start_time = time.time()
+for i in range(num_frames):
+    ret, frame = cap.read()
+    if not ret:
+        print("Error reading frame during FPS calculation")
+        exit()
+end_time = time.time()
+elapsed_time = end_time - start_time
+fps = int(num_frames / elapsed_time)
+print(f"Calculated FPS: {fps}")
+
 s = connect_to_server()
 
 with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5,max_num_hands=1) as hands:
@@ -80,7 +94,7 @@ with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5,ma
                 filename = f"{uuid.uuid4()}.mp4"
                 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
                 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-                fps = int(cap.get(cv2.CAP_PROP_FPS)) or 30
+                #fps = int(cap.get(cv2.CAP_PROP_FPS)) or 30
                 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
                 out = cv2.VideoWriter(os.path.join("../mediapipe videos",filename), fourcc, fps, (frame_width, frame_height))
                 print(f"Recording started: {filename}")

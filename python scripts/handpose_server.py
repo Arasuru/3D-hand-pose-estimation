@@ -3,7 +3,8 @@ import socket
 HOST = "localhost"
 PORT = 33333
 clients = []
-no_of_clients = 4 #mention the number of clients here
+no_of_clients = 3 #mention the number of clients here
+
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
     s.listen(no_of_clients)  

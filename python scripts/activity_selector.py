@@ -7,7 +7,7 @@ import csv
 
 
 gestures = ["thumbs up", "peace", "ok sign", "open palm", "pointing finger"] * 3
-activities = ["pouring water", "writing", "moving an object", "opening a jar/bottle", "handshaking", "using controller"] 
+activities = ["pouring water", "writing", "moving an object", "stacking blocks", "using controller"] 
 
 activity_order = []
 timestamps = []
